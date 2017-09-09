@@ -6,27 +6,44 @@
 package co.konrad.project1.ntd.entities;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  *
  * @author PC
  */
 @Entity
+@Table(name="promocion")
 public class PromocionEntity implements Serializable{
+    /**
+     * llave primaria de la promoción
+     */
     @Id
-    Long promocionId;
-    String nombre;
-    String descripcion;
-    Long descuento;
+    @Column(name="id_promocion", unique=true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    /**
+     * nombre de la promoción
+     */
+    @Column(name="nombre_promocion")
+    private String nombre;
+    /**
+     * descripción de la promoción
+     */
+    @Column(name="descripcion_promocion")
+    private String descripcion;
+    /**
+     * descuento de la promoción
+     */
+    @Column(name="descuento_promocion")
+    private Long descuento;
 
-    public Long getPromocionId() {
-        return promocionId;
+    public Long getId() {
+        return id;
     }
 
-    public void setPromocionId(Long promocionId) {
-        this.promocionId = promocionId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -52,5 +69,4 @@ public class PromocionEntity implements Serializable{
     public void setDescuento(Long descuento) {
         this.descuento = descuento;
     }
-    
 }
