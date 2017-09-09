@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class EnvioEntity implements Serializable{
 
     /**
-     * llave primaria de la categoría
+     * llave primaria del envio
      */
     @Id
     @Column(name="id_envio", unique=true)
