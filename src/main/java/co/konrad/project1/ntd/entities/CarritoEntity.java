@@ -6,14 +6,7 @@
 package co.konrad.project1.ntd.entities;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Entidad Carrito de compras
@@ -37,12 +30,12 @@ public class CarritoEntity implements Serializable{
     @JoinColumn(name="id_factura", unique=false)
     private Long facturaId;
 
-    public Long getCarritoId() {
-        return carritoId;
+    public Long getId() {
+        return id;
     }
 
-    public void setCarritoId(Long carritoId) {
-        this.carritoId = carritoId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getFacturaId() {
@@ -52,6 +45,4 @@ public class CarritoEntity implements Serializable{
     public void setFacturaId(Long facturaId) {
         this.facturaId = facturaId;
     }
-    
-    
 }

@@ -6,8 +6,7 @@
 package co.konrad.project1.ntd.entities;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  *
@@ -22,29 +21,29 @@ public class CategoriaEntity implements Serializable{
     @Id
     @Column(name="id_categoria", unique=true)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    private Long id;
     /**
      * nombre de la categoría
      */
     @Column(name="nombre_categoria", unique=false)
-    String nombre;
+    private String nombre;
     /**
      * descripción de la categoría
      */
     @Column(name="descripcion_categoria", unique=false)
-    String descripcion;
+    private String descripcion;
     /**
      *  de la categoría
      */
     @Column(name="categoriacol", unique=false)
-    String categoria;
+    private String categoria;
 
-    public Long getCategoriaId() {
-        return categoriaId;
+    public Long getId() {
+        return id;
     }
 
-    public void setCategoriaId(Long categoriaId) {
-        this.categoriaId = categoriaId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -70,5 +69,4 @@ public class CategoriaEntity implements Serializable{
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    
 }
