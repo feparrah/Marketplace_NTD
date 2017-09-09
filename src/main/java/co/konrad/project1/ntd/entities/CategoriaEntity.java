@@ -14,11 +14,29 @@ import javax.persistence.Id;
  * @author PC
  */
 @Entity
+@Table(name="categoria")
 public class CategoriaEntity implements Serializable{
+    /**
+     * llave primaria de la categoría
+     */
     @Id
+    @Column(name="id_categoria", unique=true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long categoriaId;
+    /**
+     * nombre de la categoría
+     */
+    @Column(name="nombre_categoria", unique=false)
     String nombre;
+    /**
+     * descripción de la categoría
+     */
+    @Column(name="descripcion_categoria", unique=false)
     String descripcion;
+    /**
+     *  de la categoría
+     */
+    @Column(name="categoriacol", unique=false)
     String categoria;
 
     public Long getCategoriaId() {
