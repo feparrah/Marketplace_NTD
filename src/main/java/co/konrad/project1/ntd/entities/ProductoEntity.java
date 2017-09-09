@@ -6,34 +6,83 @@
 package co.konrad.project1.ntd.entities;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  *
  * @author PC
  */
 @Entity
+@Table(name="producto")
 public class ProductoEntity implements Serializable{
+    /**
+     * llave primaria del producto
+     */
     @Id
-    Long productoId;
-    String nombre;
-    String descripcion;
-    String stock;
-    Long precio;
-    String marca;
-    String garantia;
-    Long categoriaId;
-    Long proveedorId;
-    Long promocionId;
-    Long comentariosId;
+    @Column(name="id_producto", unique=true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    /**
+     * nombre del producto
+     */
+    @Column(name="nombre_producto")
+    private String nombre;
+    /**
+     * descripción del producto
+     */
+    @Column(name="descripcion_producto")
+    private String descripcion;
+    /**
+     * stock del producto
+     */
+    @Column(name="stock_producto")
+    private String stock;
+    /**
+     * precio del producto
+     */
+    @Column(name="precio_producto")
+    private Long precio;
+    /**
+     * marca del producto
+     */
+    @Column(name="marca_producto")
+    private String marca;
+    /**
+     * garantía del producto
+     */
+    @Column(name="garantia_producto")
+    private String garantia;
+    /**
+     * llave foranea del producto hacia categoría
+     */
+    @ManyToOne
+    @JoinColumn(name="id_categoria")
+    private CategoriaEntity categoria;
+    /**
+     * llave foranea del producto hacia proveedor
+     */
+    @ManyToOne
+    @JoinColumn(name="id_proveedor")
+    private ProveedorEntity proveedor;
+    /**
+     * llave foranea del producto hacia promoción
+     */
+    @ManyToOne
+    @JoinColumn(name="id_promocion")
+    private PromocionEntity promocion;
+    /**
+     * llave foranea del producto hacia comentarios
+     */
+    @ManyToOne
+    @JoinColumn(name="id_comentario")
+    private ComentarioProductoEntity comentario;
 
-    public Long getProductoId() {
-        return productoId;
+    public Long getId() {
+        return id;
     }
 
-    public void setProductoId(Long productoId) {
-        this.productoId = productoId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -84,37 +133,35 @@ public class ProductoEntity implements Serializable{
         this.garantia = garantia;
     }
 
-    public Long getCategoriaId() {
-        return categoriaId;
+    public CategoriaEntity getCategoria() {
+        return categoria;
     }
 
-    public void setCategoriaId(Long categoriaId) {
-        this.categoriaId = categoriaId;
+    public void setCategoria(CategoriaEntity categoria) {
+        this.categoria = categoria;
     }
 
-    public Long getProveedorId() {
-        return proveedorId;
+    public ProveedorEntity getProveedor() {
+        return proveedor;
     }
 
-    public void setProveedorId(Long proveedorId) {
-        this.proveedorId = proveedorId;
+    public void setProveedor(ProveedorEntity proveedor) {
+        this.proveedor = proveedor;
     }
 
-    public Long getPromocionId() {
-        return promocionId;
+    public PromocionEntity getPromocion() {
+        return promocion;
     }
 
-    public void setPromocionId(Long promocionId) {
-        this.promocionId = promocionId;
+    public void setPromocion(PromocionEntity promocion) {
+        this.promocion = promocion;
     }
 
-    public Long getComentariosId() {
-        return comentariosId;
+    public ComentarioProductoEntity getComentario() {
+        return comentario;
     }
 
-    public void setComentariosId(Long comentariosId) {
-        this.comentariosId = comentariosId;
+    public void setComentario(ComentarioProductoEntity comentario) {
+        this.comentario = comentario;
     }
-    
-    
 }

@@ -7,41 +7,68 @@ package co.konrad.project1.ntd.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 /**
  *
  * @author PC
  */
 @Entity
+@Table(name="metodo_pago")
 public class MetodoPagoEntity implements Serializable{
+    /**
+     * llave primaria del metodo de pago
+     */
     @Id
-    Long metodoPagoId;
-    String nombrePago;
-    String detalle;
-    String banco;
-    Long numeroCuenta;
+    @Column(name="id_metodo_pago", unique=true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    /**
+     * nombre del metodo de pago
+     */
+    @Column(name="nombre_metodo_pago")
+    private String nombre;
+    /**
+     * detalle del metodo de pago
+     */
+    @Column(name="detalle_metodo_pago")
+    private String detalle;
+    /**
+     * banco del metodo de pago
+     */
+    @Column(name="banco_metodo_pago")
+    private String banco;
+    /**
+     * numero cuenta del metodo de pago
+     */
+    @Column(name="numero_cuenta_metodo_pago")
+    private Long numeroCuenta;
+    /**
+     * fecha de vencimiento del metodo de pago
+     */
+    @Column(name="fecha_vencimiento_metodo_pago")
     @Temporal(TemporalType.DATE)
-    Date fechaVencimiento;
-    Long clave;
+    private Date fechaVencimiento;
+    /**
+     * clave del metodo de pago
+     */
+    @Column(name="clave_metodo_pago")
+    private Long clave;
 
-    public Long getMetodoPagoId() {
-        return metodoPagoId;
+    public Long getId() {
+        return id;
     }
 
-    public void setMetodoPagoId(Long metodoPagoId) {
-        this.metodoPagoId = metodoPagoId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getNombrePago() {
-        return nombrePago;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombrePago(String nombrePago) {
-        this.nombrePago = nombrePago;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDetalle() {
@@ -83,7 +110,4 @@ public class MetodoPagoEntity implements Serializable{
     public void setClave(Long clave) {
         this.clave = clave;
     }
-    
-    
-    
 }

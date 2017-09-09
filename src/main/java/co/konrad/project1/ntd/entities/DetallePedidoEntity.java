@@ -7,30 +7,47 @@ package co.konrad.project1.ntd.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 /**
  *
  * @author PC
  */
 @Entity
+@Table(name="detalle_pedido")
 public class DetallePedidoEntity implements Serializable{
+    /**
+     * llave primaria del pedido
+     */
     @Id
-    Long detallePedidoId;
+    @Column(name="id_pedido", unique=true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    /**
+     * fecha del pedido
+     */
+    @Column(name="fecha_pedido")
     @Temporal(TemporalType.DATE)
-    Date fechaPedido;
-    Long productoId;
-    Long facturaId;
+    private Date fechaPedido;
+    /**
+     * llave foranea del pedido hacia el producto
+     */
+    @ManyToOne
+    @JoinColumn(name="id_producto")
+    private ProductoEntity producto;
+    /**
+     * llave foranea del pedido hacia la factura
+     */
+    @ManyToOne
+    @JoinColumn(name="id_factura")
+    private FacturaEntity factura;
 
-    public Long getDetallePedidoId() {
-        return detallePedidoId;
+    public Long getId() {
+        return id;
     }
 
-    public void setDetallePedidoId(Long detallePedidoId) {
-        this.detallePedidoId = detallePedidoId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Date getFechaPedido() {
@@ -41,20 +58,19 @@ public class DetallePedidoEntity implements Serializable{
         this.fechaPedido = fechaPedido;
     }
 
-    public Long getProductoId() {
-        return productoId;
+    public ProductoEntity getProducto() {
+        return producto;
     }
 
-    public void setProductoId(Long productoId) {
-        this.productoId = productoId;
+    public void setProducto(ProductoEntity producto) {
+        this.producto = producto;
     }
 
-    public Long getFacturaId() {
-        return facturaId;
+    public FacturaEntity getFactura() {
+        return factura;
     }
 
-    public void setFacturaId(Long facturaId) {
-        this.facturaId = facturaId;
+    public void setFactura(FacturaEntity factura) {
+        this.factura = factura;
     }
-    
 }

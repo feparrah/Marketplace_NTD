@@ -6,35 +6,43 @@
 package co.konrad.project1.ntd.entities;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
- *
+ * Entidad Carrito de compras
  * @author PC
  */
 @Entity
+@Table(name="carrito")
 public class CarritoEntity implements Serializable{
-    
+
+    /**
+     * llave primaria del carrito de compras
+     */
     @Id
-    Long carritoId;
-    Long facturaId;
+    @Column(name="id_carrito", unique=true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    /**
+     * llave foranea hacia factura
+     */
+    @ManyToOne
+    @JoinColumn(name="id_factura")
+    private FacturaEntity factura;
 
-    public Long getCarritoId() {
-        return carritoId;
+    public Long getId() {
+        return id;
     }
 
-    public void setCarritoId(Long carritoId) {
-        this.carritoId = carritoId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Long getFacturaId() {
-        return facturaId;
+    public FacturaEntity getFactura() {
+        return factura;
     }
 
-    public void setFacturaId(Long facturaId) {
-        this.facturaId = facturaId;
+    public void setFactura(FacturaEntity factura) {
+        this.factura = factura;
     }
-    
-    
 }

@@ -7,39 +7,55 @@ package co.konrad.project1.ntd.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 /**
  *
  * @author PC
  */
 @Entity
+@Table(name="factura")
 public class FacturaEntity implements Serializable{
-    
+
+    /**
+     * llave primaria de la factura
+     */
     @Id
-    Long facturaId;
+    @Column(name="id_factura", unique=true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    /**
+     * fecha de la factura
+     */
+    @Column(name="fecha_factura", unique=false)
     @Temporal(TemporalType.DATE)
-    Date fechaFactura;
-    Long valorTotal;
-    Long metodoPagoId;
+    private Date fecha;
+    /**
+     * valor total de la factura
+     */
+    @Column(name="valor_total_factura", unique=false)
+    private Long valorTotal;
+    /**
+     * llave foranea de la factura al metodo de pago
+     */
+    @ManyToOne
+    @JoinColumn(name="id_metodo_pago")
+    private MetodoPagoEntity metodoPago;
 
-    public Long getFacturaId() {
-        return facturaId;
+    public Long getId() {
+        return id;
     }
 
-    public void setFacturaId(Long facturaId) {
-        this.facturaId = facturaId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Date getFechaFactura() {
-        return fechaFactura;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setFechaFactura(Date fechaFactura) {
-        this.fechaFactura = fechaFactura;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     public Long getValorTotal() {
@@ -50,12 +66,11 @@ public class FacturaEntity implements Serializable{
         this.valorTotal = valorTotal;
     }
 
-    public Long getMetodoPagoId() {
-        return metodoPagoId;
+    public MetodoPagoEntity getMetodoPago() {
+        return metodoPago;
     }
 
-    public void setMetodoPagoId(Long metodoPagoId) {
-        this.metodoPagoId = metodoPagoId;
+    public void setMetodoPago(MetodoPagoEntity metodoPago) {
+        this.metodoPago = metodoPago;
     }
-    
 }

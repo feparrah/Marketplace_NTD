@@ -7,47 +7,108 @@ package co.konrad.project1.ntd.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 /**
  *
  * @author PC
  */
 @Entity
+@Table(name="cliente")
 public class ClienteEntity implements Serializable{
+    /**
+     * llave primaria del cliente
+     */
     @Id
-    Long clienteId;
-    
-    String tipoDocumento;
-    Long numeroDocumento;
-    String nombreCliente;
-    String apellidos;
-    Long telefono;
-    String email;
+    @Column(name="id_cliente", unique=true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    /**
+     * tipo de documento del cliente
+     */
+    @Column(name="tipo_documento_cliente")
+    private String tipoDocumento;
+    /**
+     * número del documento del cliente
+     */
+    @Column(name="numero_documento_cliente")
+    private Long numeroDocumento;
+    /**
+     * nombre del cliente
+     */
+    @Column(name="nombre_cliente")
+    private String nombre;
+    /**
+     * apellido del cliente
+     */
+    @Column(name="apellido_cliente")
+    private String apellido;
+    /**
+     * teléfono del cliente
+     */
+    @Column(name="telefono_cliente")
+    private Long telefono;
+    /**
+     * corréo del cliente
+     */
+    @Column(name="email_cliente", unique=true)
+    private String email;
+    /**
+     * fecha de nacimiento del cliente
+     */
+    @Column(name="fecha_nacimiento_cliente")
     @Temporal(TemporalType.DATE)
-    Date fechaNacimiento;
-    String direccion;
-    String ciudad;
-    String pais;
-    String usuario;
-    String password;
+    private Date fechaNacimiento;
+    /**
+     * dirección del cliente
+     */
+    @Column(name="direccion_cliente")
+    private String direccion;
+    /**
+     * ciudad del cliente
+     */
+    @Column(name="ciudad_cliente")
+    private String ciudad;
+    /**
+     * pais del cliente
+     */
+    @Column(name="pais_cliente")
+    private String pais;
+    /**
+     * nombre de usuario del cliente
+     */
+    @Column(name="usuario_cliente")
+    private String usuario;
+    /**
+     * contraseña del cliente
+     */
+    @Column(name="password_cliente")
+    private String password;
+    /**
+     * imagen del cliente
+     */
     @Lob
-    @Column(length=100000)
-    byte[] imagen;
-    Long idEnvio;
-    Long idCarrito;
+    @Column(name="imagen_cliente", length=100000)
+    private byte[] imagen;
+    /**
+     * llave foranea del cliente a envio
+     */
+    @ManyToOne
+    @JoinColumn(name="id_envio")
+    private EnvioEntity envio;
+    /**
+     * llave foranea del cliente al carrito de compras
+     */
+    @ManyToOne
+    @JoinColumn(name="id_carrito")
+    private CarritoEntity carrito;
 
-    public Long getClienteId() {
-        return clienteId;
+    public Long getId() {
+        return id;
     }
 
-    public void setClienteId(Long clienteId) {
-        this.clienteId = clienteId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTipoDocumento() {
@@ -66,20 +127,20 @@ public class ClienteEntity implements Serializable{
         this.numeroDocumento = numeroDocumento;
     }
 
-    public String getNombreCliente() {
-        return nombreCliente;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public Long getTelefono() {
@@ -154,21 +215,19 @@ public class ClienteEntity implements Serializable{
         this.imagen = imagen;
     }
 
-    public Long getIdEnvio() {
-        return idEnvio;
+    public EnvioEntity getEnvio() {
+        return envio;
     }
 
-    public void setIdEnvio(Long idEnvio) {
-        this.idEnvio = idEnvio;
+    public void setEnvio(EnvioEntity envio) {
+        this.envio = envio;
     }
 
-    public Long getIdCarrito() {
-        return idCarrito;
+    public CarritoEntity getCarrito() {
+        return carrito;
     }
 
-    public void setIdCarrito(Long idCarrito) {
-        this.idCarrito = idCarrito;
+    public void setCarrito(CarritoEntity carrito) {
+        this.carrito = carrito;
     }
-    
-    
 }
