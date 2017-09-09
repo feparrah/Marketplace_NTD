@@ -6,52 +6,68 @@
 package co.konrad.project1.ntd.entities;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  *
  * @author PC
  */
 @Entity
+@Table(name="envio")
 public class EnvioEntity implements Serializable{
-    
+
+    /**
+     * llave primaria de la categoría
+     */
     @Id
-    Long envioId;
-    String direccionEnvio;
-    String ciudadEnvio;
-    String paisEnvio;
+    @Column(name="id_envio", unique=true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    /**
+     * dirección del envio
+     */
+    @Column(name="direccion_envio", unique=false)
+    private String direccion;
+    /**
+     * ciudad del envio
+     */
+    @Column(name="ciudad_envio", unique=false)
+    private String ciudad;
+    /**
+     * pais del envio
+     */
+    @Column(name="pais_envio", unique=false)
+    private String pais;
 
-    public Long getEnvioId() {
-        return envioId;
+    public Long getId() {
+        return id;
     }
 
-    public void setEnvioId(Long envioId) {
-        this.envioId = envioId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getDireccionEnvio() {
-        return direccionEnvio;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDireccionEnvio(String direccionEnvio) {
-        this.direccionEnvio = direccionEnvio;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public String getCiudadEnvio() {
-        return ciudadEnvio;
+    public String getCiudad() {
+        return ciudad;
     }
 
-    public void setCiudadEnvio(String ciudadEnvio) {
-        this.ciudadEnvio = ciudadEnvio;
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
     }
 
-    public String getPaisEnvio() {
-        return paisEnvio;
+    public String getPais() {
+        return pais;
     }
 
-    public void setPaisEnvio(String paisEnvio) {
-        this.paisEnvio = paisEnvio;
+    public void setPais(String pais) {
+        this.pais = pais;
     }
-    
 }
