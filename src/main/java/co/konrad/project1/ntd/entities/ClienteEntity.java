@@ -19,27 +19,93 @@ import javax.persistence.TemporalType;
  * @author PC
  */
 @Entity
+@Table(name="cliente")
 public class ClienteEntity implements Serializable{
+    /**
+     * llave primaria del cliente
+     */
     @Id
-    Long clienteId;
-    
+    @Column(name="id_cliente", unique=true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Long id;
+    /**
+     * tipo de documento del cliente
+     */
+    @Column(name="tipo_documento_cliente", unique=false)
     String tipoDocumento;
+    /**
+     * número del documento del cliente
+     */
+    @Column(name="numero_documento_cliente", unique=false)
     Long numeroDocumento;
-    String nombreCliente;
-    String apellidos;
+    /**
+     * nombre del cliente
+     */
+    @Column(name="nombre_cliente", unique=false)
+    String nombre;
+    /**
+     * apellido del cliente
+     */
+    @Column(name="apellido_cliente", unique=false)
+    String apellido;
+    /**
+     * teléfono del cliente
+     */
+    @Column(name="telefono_cliente", unique=false)
     Long telefono;
+    /**
+     * corréo del cliente
+     */
+    @Column(name="email_cliente", unique=true)
     String email;
+    /**
+     * fecha de nacimiento del cliente
+     */
+    @Column(name="fecha_nacimiento_cliente", unique=false)
     @Temporal(TemporalType.DATE)
     Date fechaNacimiento;
+    /**
+     * dirección del cliente
+     */
+    @Column(name="direccion_cliente", unique=false)
     String direccion;
+    /**
+     * ciudad del cliente
+     */
+    @Column(name="ciudad_cliente", unique=false)
     String ciudad;
+    /**
+     * pais del cliente
+     */
+    @Column(name="pais_cliente", unique=false)
     String pais;
+    /**
+     * nombre de usuario del cliente
+     */
+    @Column(name="usuario_cliente", unique=false)
     String usuario;
+    /**
+     * contraseña del cliente
+     */
+    @Column(name="password_cliente", unique=false)
     String password;
+    /**
+     * imagen del cliente
+     */
+    @Column(name="imagen_cliente", unique=false)
     @Lob
     @Column(length=100000)
     byte[] imagen;
+    /**
+     * llave foranea del cliente a envio
+     */
+    @ManyToOne
+    @JoinColumn(name="id_envio", unique=false)
     Long idEnvio;
+    /**
+     * llave foranea del cliente al carrito de compras
+     */
+    @Column(name="id_carrito", unique=false)
     Long idCarrito;
 
     public Long getClienteId() {

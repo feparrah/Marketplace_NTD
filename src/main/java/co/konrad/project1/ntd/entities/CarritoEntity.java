@@ -20,7 +20,7 @@ import javax.persistence.Table;
  * @author PC
  */
 @Entity
-@Table(name="festival")
+@Table(name="carrito")
 public class CarritoEntity implements Serializable{
 
     /**
@@ -29,7 +29,7 @@ public class CarritoEntity implements Serializable{
     @Id
     @Column(name="id_carrito", unique=true)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long carritoId;
+    private Long id;
     /**
      * llave foranea hacia factura
      */

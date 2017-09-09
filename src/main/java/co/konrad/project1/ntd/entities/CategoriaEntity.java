@@ -22,7 +22,7 @@ public class CategoriaEntity implements Serializable{
     @Id
     @Column(name="id_categoria", unique=true)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long categoriaId;
+    Long id;
     /**
      * nombre de la categoría
      */
