@@ -26,21 +26,21 @@ public class DetallePedidoEntity implements Serializable{
     /**
      * fecha del pedido
      */
-    @Column(name="fecha_pedido", unique=false)
+    @Column(name="fecha_pedido")
     @Temporal(TemporalType.DATE)
     private Date fechaPedido;
     /**
      * llave foranea del pedido hacia el producto
      */
     @ManyToOne
-    @JoinColumn(name="id_producto", unique=false)
-    private Long productoId;
+    @JoinColumn(name="id_producto")
+    private ProductoEntity producto;
     /**
      * llave foranea del pedido hacia la factura
      */
     @ManyToOne
-    @JoinColumn(name="id_factura", unique=false)
-    private Long facturaId;
+    @JoinColumn(name="id_factura")
+    private FacturaEntity factura;
 
     public Long getId() {
         return id;
@@ -58,19 +58,19 @@ public class DetallePedidoEntity implements Serializable{
         this.fechaPedido = fechaPedido;
     }
 
-    public Long getProductoId() {
-        return productoId;
+    public ProductoEntity getProducto() {
+        return producto;
     }
 
-    public void setProductoId(Long productoId) {
-        this.productoId = productoId;
+    public void setProducto(ProductoEntity producto) {
+        this.producto = producto;
     }
 
-    public Long getFacturaId() {
-        return facturaId;
+    public FacturaEntity getFactura() {
+        return factura;
     }
 
-    public void setFacturaId(Long facturaId) {
-        this.facturaId = facturaId;
+    public void setFactura(FacturaEntity factura) {
+        this.factura = factura;
     }
 }

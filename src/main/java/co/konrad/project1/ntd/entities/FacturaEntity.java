@@ -38,8 +38,9 @@ public class FacturaEntity implements Serializable{
     /**
      * llave foranea de la factura al metodo de pago
      */
-    @Column(name="id_metodo_pago", unique=false)
-    private Long metodoPagoId;
+    @ManyToOne
+    @JoinColumn(name="id_metodo_pago")
+    private MetodoPagoEntity metodoPago;
 
     public Long getId() {
         return id;
@@ -65,11 +66,11 @@ public class FacturaEntity implements Serializable{
         this.valorTotal = valorTotal;
     }
 
-    public Long getMetodoPagoId() {
-        return metodoPagoId;
+    public MetodoPagoEntity getMetodoPago() {
+        return metodoPago;
     }
 
-    public void setMetodoPagoId(Long metodoPagoId) {
-        this.metodoPagoId = metodoPagoId;
+    public void setMetodoPago(MetodoPagoEntity metodoPago) {
+        this.metodoPago = metodoPago;
     }
 }

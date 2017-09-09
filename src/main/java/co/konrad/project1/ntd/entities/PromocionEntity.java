@@ -33,10 +33,11 @@ public class PromocionEntity implements Serializable{
     @Column(name="descripcion_promocion")
     private String descripcion;
     /**
-     * descuento de la promoción
+     * llave foranea de la promocion hacia el producto
      */
-    @Column(name="descuento_promocion")
-    private Long descuento;
+    @ManyToOne
+    @JoinColumn(name="id_producto")
+    private ProductoEntity producto;
 
     public Long getId() {
         return id;
@@ -62,11 +63,11 @@ public class PromocionEntity implements Serializable{
         this.descripcion = descripcion;
     }
 
-    public Long getDescuento() {
-        return descuento;
+    public ProductoEntity getProducto() {
+        return producto;
     }
 
-    public void setDescuento(Long descuento) {
-        this.descuento = descuento;
+    public void setProducto(ProductoEntity producto) {
+        this.producto = producto;
     }
 }

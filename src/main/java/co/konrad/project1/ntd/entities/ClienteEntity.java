@@ -26,27 +26,27 @@ public class ClienteEntity implements Serializable{
     /**
      * tipo de documento del cliente
      */
-    @Column(name="tipo_documento_cliente", unique=false)
+    @Column(name="tipo_documento_cliente")
     private String tipoDocumento;
     /**
      * número del documento del cliente
      */
-    @Column(name="numero_documento_cliente", unique=false)
+    @Column(name="numero_documento_cliente")
     private Long numeroDocumento;
     /**
      * nombre del cliente
      */
-    @Column(name="nombre_cliente", unique=false)
+    @Column(name="nombre_cliente")
     private String nombre;
     /**
      * apellido del cliente
      */
-    @Column(name="apellido_cliente", unique=false)
+    @Column(name="apellido_cliente")
     private String apellido;
     /**
      * teléfono del cliente
      */
-    @Column(name="telefono_cliente", unique=false)
+    @Column(name="telefono_cliente")
     private Long telefono;
     /**
      * corréo del cliente
@@ -56,51 +56,52 @@ public class ClienteEntity implements Serializable{
     /**
      * fecha de nacimiento del cliente
      */
-    @Column(name="fecha_nacimiento_cliente", unique=false)
+    @Column(name="fecha_nacimiento_cliente")
     @Temporal(TemporalType.DATE)
     private Date fechaNacimiento;
     /**
      * dirección del cliente
      */
-    @Column(name="direccion_cliente", unique=false)
-    String direccion;
+    @Column(name="direccion_cliente")
+    private String direccion;
     /**
      * ciudad del cliente
      */
-    @Column(name="ciudad_cliente", unique=false)
+    @Column(name="ciudad_cliente")
     private String ciudad;
     /**
      * pais del cliente
      */
-    @Column(name="pais_cliente", unique=false)
+    @Column(name="pais_cliente")
     private String pais;
     /**
      * nombre de usuario del cliente
      */
-    @Column(name="usuario_cliente", unique=false)
+    @Column(name="usuario_cliente")
     private String usuario;
     /**
      * contraseña del cliente
      */
-    @Column(name="password_cliente", unique=false)
+    @Column(name="password_cliente")
     private String password;
     /**
      * imagen del cliente
      */
     @Lob
-    @Column(name="imagen_cliente", unique=false, length=100000)
+    @Column(name="imagen_cliente", length=100000)
     private byte[] imagen;
     /**
      * llave foranea del cliente a envio
      */
     @ManyToOne
-    @JoinColumn(name="id_envio", unique=false)
-    private Long idEnvio;
+    @JoinColumn(name="id_envio")
+    private EnvioEntity envio;
     /**
      * llave foranea del cliente al carrito de compras
      */
-    @Column(name="id_carrito", unique=false)
-    private Long idCarrito;
+    @ManyToOne
+    @JoinColumn(name="id_carrito")
+    private CarritoEntity carrito;
 
     public Long getId() {
         return id;
@@ -214,19 +215,19 @@ public class ClienteEntity implements Serializable{
         this.imagen = imagen;
     }
 
-    public Long getIdEnvio() {
-        return idEnvio;
+    public EnvioEntity getEnvio() {
+        return envio;
     }
 
-    public void setIdEnvio(Long idEnvio) {
-        this.idEnvio = idEnvio;
+    public void setEnvio(EnvioEntity envio) {
+        this.envio = envio;
     }
 
-    public Long getIdCarrito() {
-        return idCarrito;
+    public CarritoEntity getCarrito() {
+        return carrito;
     }
 
-    public void setIdCarrito(Long idCarrito) {
-        this.idCarrito = idCarrito;
+    public void setCarrito(CarritoEntity carrito) {
+        this.carrito = carrito;
     }
 }

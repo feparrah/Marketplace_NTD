@@ -55,23 +55,27 @@ public class ProductoEntity implements Serializable{
     /**
      * llave foranea del producto hacia categoría
      */
-    @Column(name="id_categoria")
-    private Long categoriaId;
+    @ManyToOne
+    @JoinColumn(name="id_categoria")
+    private CategoriaEntity categoria;
     /**
      * llave foranea del producto hacia proveedor
      */
-    @Column(name="id_proveedor")
-    private Long proveedorId;
+    @ManyToOne
+    @JoinColumn(name="id_proveedor")
+    private ProveedorEntity proveedor;
     /**
      * llave foranea del producto hacia promoción
      */
-    @Column(name="id_promocion")
-    private Long promocionId;
+    @ManyToOne
+    @JoinColumn(name="id_promocion")
+    private PromocionEntity promocion;
     /**
      * llave foranea del producto hacia comentarios
      */
-    @Column(name="id_comentarios")
-    private Long comentariosId;
+    @ManyToOne
+    @JoinColumn(name="id_comentario")
+    private ComentarioProductoEntity comentario;
 
     public Long getId() {
         return id;
@@ -129,35 +133,35 @@ public class ProductoEntity implements Serializable{
         this.garantia = garantia;
     }
 
-    public Long getCategoriaId() {
-        return categoriaId;
+    public CategoriaEntity getCategoria() {
+        return categoria;
     }
 
-    public void setCategoriaId(Long categoriaId) {
-        this.categoriaId = categoriaId;
+    public void setCategoria(CategoriaEntity categoria) {
+        this.categoria = categoria;
     }
 
-    public Long getProveedorId() {
-        return proveedorId;
+    public ProveedorEntity getProveedor() {
+        return proveedor;
     }
 
-    public void setProveedorId(Long proveedorId) {
-        this.proveedorId = proveedorId;
+    public void setProveedor(ProveedorEntity proveedor) {
+        this.proveedor = proveedor;
     }
 
-    public Long getPromocionId() {
-        return promocionId;
+    public PromocionEntity getPromocion() {
+        return promocion;
     }
 
-    public void setPromocionId(Long promocionId) {
-        this.promocionId = promocionId;
+    public void setPromocion(PromocionEntity promocion) {
+        this.promocion = promocion;
     }
 
-    public Long getComentariosId() {
-        return comentariosId;
+    public ComentarioProductoEntity getComentario() {
+        return comentario;
     }
 
-    public void setComentariosId(Long comentariosId) {
-        this.comentariosId = comentariosId;
+    public void setComentario(ComentarioProductoEntity comentario) {
+        this.comentario = comentario;
     }
 }

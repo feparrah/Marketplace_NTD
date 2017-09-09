@@ -26,17 +26,17 @@ public class EnvioEntity implements Serializable{
     /**
      * dirección del envio
      */
-    @Column(name="direccion_envio", unique=false)
+    @Column(name="direccion_envio")
     private String direccion;
     /**
      * ciudad del envio
      */
-    @Column(name="ciudad_envio", unique=false)
+    @Column(name="ciudad_envio")
     private String ciudad;
     /**
      * pais del envio
      */
-    @Column(name="pais_envio", unique=false)
+    @Column(name="pais_envio")
     private String pais;
 
     public Long getId() {

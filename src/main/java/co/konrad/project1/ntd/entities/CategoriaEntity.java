@@ -25,17 +25,17 @@ public class CategoriaEntity implements Serializable{
     /**
      * nombre de la categoría
      */
-    @Column(name="nombre_categoria", unique=false)
+    @Column(name="nombre_categoria")
     private String nombre;
     /**
      * descripción de la categoría
      */
-    @Column(name="descripcion_categoria", unique=false)
+    @Column(name="descripcion_categoria")
     private String descripcion;
     /**
      *  de la categoría
      */
-    @Column(name="categoriacol", unique=false)
+    @Column(name="categoriacol")
     private String categoria;
 
     public Long getId() {

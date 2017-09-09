@@ -27,8 +27,8 @@ public class CarritoEntity implements Serializable{
      * llave foranea hacia factura
      */
     @ManyToOne
-    @JoinColumn(name="id_factura", unique=false)
-    private Long facturaId;
+    @JoinColumn(name="id_factura")
+    private FacturaEntity factura;
 
     public Long getId() {
         return id;
@@ -38,11 +38,11 @@ public class CarritoEntity implements Serializable{
         this.id = id;
     }
 
-    public Long getFacturaId() {
-        return facturaId;
+    public FacturaEntity getFactura() {
+        return factura;
     }
 
-    public void setFacturaId(Long facturaId) {
-        this.facturaId = facturaId;
+    public void setFactura(FacturaEntity factura) {
+        this.factura = factura;
     }
 }
